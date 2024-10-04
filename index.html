@@ -13,6 +13,7 @@
 
         </main>
         <script>
+            //variables and main objectives for the game
             let energy = 100;
             let food = 50;
             let water = 50;
@@ -20,12 +21,14 @@
             let dayCounter = 0;
             let dogs = 0;
 
+            //produces energy
             function produceEnergy(amount){
                 energy += amount;
                 updateDisplay();
 
             }
 
+            //consumes resources
             function consumeResources(){
                 food -= population;
                 water -= population;
@@ -34,6 +37,7 @@
 
             }
           
+            //adds people to the moonbase
             function buildModule(){
                     if(energy >= 20){
                         energy -= 20;
@@ -42,6 +46,7 @@
                     }
             }
 
+            //adds dogs to the moonbase
             function addDogs(amount){
                     if(energy >= 20, population >= 15){
                         dogs += 3;
@@ -52,6 +57,7 @@
                     }
             }
 
+            //produces food and consumes water
             function produceFood(amount){
                 food += amount;
                 water -= 1;
@@ -59,12 +65,14 @@
                 updateDisplay();
             }
 
+            //produces water and consumes energy
             function produceWater(amount){
                 water += amount;
                 energy -= 10;
                 updateDisplay();
             }
 
+            //runs the game
             function updateDisplay(){
                 const statusHTML = `
                 <h2>Moonbase Status - Day ${dayCounter}</h2>
@@ -82,6 +90,7 @@
             }
             `;
             document.getElementById('game-area').innerHTML = statusHTML;
+            //ends the game
             if (food, water <= 0){
                 alert("GAME OVER!");
             }
@@ -89,6 +98,8 @@
                 alert("GAME OVER!");
             }
             }
+
+            //passes time, consumes resources, and adds people
             function simulateDay(){
                 dayCounter++;
                 consumeResources();
@@ -99,5 +110,7 @@
             }
             updateDisplay();
         </script>
+        <p>Don't let Energy, Food, or Water hit 0!</p>
+        <p>You can get a few dogs if you have at least 15 people and 20 energy.</p>
     </body>
 </html>
