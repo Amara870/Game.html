@@ -1,116 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, inital-scale=1.0">
-    </head>
-    <body>
-        <header>
-
-        </header>
-
-        <main id="game-area">
-
-        </main>
-        <script>
-            //variables and main objectives for the game
-            let energy = 100;
-            let food = 50;
-            let water = 50;
-            let population = 5;
-            let dayCounter = 0;
-            let dogs = 0;
-
-            //produces energy
-            function produceEnergy(amount){
-                energy += amount;
-                updateDisplay();
-
-            }
-
-            //consumes resources
-            function consumeResources(){
-                food -= population;
-                water -= population;
-                food = Math.max(food, 0);
-                water = Math.max(water, 0);
-
-            }
-          
-            //adds people to the moonbase
-            function buildModule(){
-                    if(energy >= 20){
-                        energy -= 20;
-                        population += 5;
-                        updateDisplay();
-                    }
-            }
-
-            //adds dogs to the moonbase
-            function addDogs(amount){
-                    if(energy >= 20, population >= 15){
-                        dogs += 3;
-                        food -= .5;
-                        water -= 1;
-                        energy -= 10;
-                        updateDisplay();
-                    }
-            }
-
-            //produces food and consumes water
-            function produceFood(amount){
-                food += amount;
-                water -= 1;
-                energy -= 5;
-                updateDisplay();
-            }
-
-            //produces water and consumes energy
-            function produceWater(amount){
-                water += amount;
-                energy -= 10;
-                updateDisplay();
-            }
-
-            //runs the game
-            function updateDisplay(){
-                const statusHTML = `
-                <h2>Moonbase Status - Day ${dayCounter}</h2>
-                <p>Energy: ${energy}</p>
-                <p>Food: ${food}</p>
-                <p>Water: ${water}</p>
-                <p>Population: ${population}</p>
-                <p>Pets: ${dogs}</p>
-                <button onclick="simulateDay()">Simulate a Day</button>
-                <button onclick="produceEnergy(10)">Produce Energy (+10)</button>
-                <button onclick="buildModule()">Build Module (Cost: 20 Energy)</button>
-                <button onclick="addDogs()">Get a Dog (Cost: 20 Energy)</button>
-                <button onclick="produceFood(3)">Produce Food (+3)</button>
-                <button onclick="produceWater(5)">Produce Water (+5)</button>
-            }
-            `;
-            document.getElementById('game-area').innerHTML = statusHTML;
-            //ends the game
-            if (food, water <= 0){
-                alert("GAME OVER!");
-            }
-            if (energy<= 0){
-                alert("GAME OVER!");
-            }
-            }
-
-            //passes time, consumes resources, and adds people
-            function simulateDay(){
-                dayCounter++;
-                consumeResources();
-                if (Math.random() > 0.5){
-                    buildModule();
-                }
-                updateDisplay();
-            }
-            updateDisplay();
-        </script>
-        <p>Don't let Energy, Food, or Water hit 0!</p>
-        <p>You can get a few dogs if you have at least 15 people and 20 energy.</p>
-    </body>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Coding Week 2</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <header>
+      <!--Page title-->
+      <h1>Coding Week 2</h1>
+      <!--Page Description-->
+      <p>First Webpage made in ItP</p>
+      <!--Navigation on both pages-->
+      <nav>
+        <h2>Links</h2>
+        <ul>
+          <li><a href="index.html">Index</a></li>
+          <li><a href="boards.html">Board</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section>
+        <img id="memeimage" src="meme.jpg" alt="child running away from homework" width="1000" hieght="500">
+    </section>
+    <p>
+      Children do not like schoolwork. Homework is the worst. Homework is tiring. (I like coding assignments though).    
+    </p>
+    <footer>
+      Amara Hill<br>
+      University of Advancing Technology<br>
+      2625 W Baseline Rd.<br>
+      Tempe, AZ 85283
+    </footer>
+  </body>
 </html>
